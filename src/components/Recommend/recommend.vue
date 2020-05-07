@@ -107,7 +107,7 @@ export default {
       scrollY: true, // 开启横行滚动
       // eventPassthrough: 'vertical'
     })
-    console.log(this.scroll,"1111")
+    // console.log(this.scroll,"1111")
     
   },
   computed:{
@@ -121,7 +121,7 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .recommendContainer
     overflow hidden
-    height 1094px
+    height 1074px
     .content
       height 2000px
       .swiperWrap

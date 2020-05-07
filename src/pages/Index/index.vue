@@ -12,9 +12,11 @@
     <div class="wrapper" ref="scrollWrapper">
       
           <div class="content" v-if="indexData.kingKongModule">
-            <div class="wrapper-item" ><span>推荐</span></div>
-            <div class="wrapper-item" v-for="(item,index) in indexData.kingKongModule.kingKongList " :key="index">
-              <span>{{item.text}}</span>
+            <div class="wrapper-item" @click="changeNavIndex(0,0)" :class="{active: navIndex === 0}">
+              <span>推荐</span>
+            </div>
+            <div class="wrapper-item" :class="{active: navIndex === index + 1}" @click="changeNavIndex((index + 1), navItem.L1Id)" v-for="(navItem,index) in indexData.kingKongModule.kingKongList.slice(1,indexData.kingKongModule.kingKongList.length) " :key="index">
+              <span>{{navItem.text}}</span>
             </div>
           </div>
           
@@ -44,7 +46,8 @@ export default {
   },
   data(){
     return{
-      
+      navIndex:0,
+      navId:0,
       scroll:null,
        
     }
@@ -68,11 +71,16 @@ export default {
     ...mapActions({
       getIndexData:'getIndexData'
     }),
+    changeNavIndex(navIndex, navId){
+				this.navIndex = navIndex
+				this.navId = navId
+			},
   },
   computed:{
     ...mapState({
       indexData:state=>state.index.indexData
     })
+    
   },
  
 
@@ -126,6 +134,7 @@ export default {
 				padding 0 5px
   .wrapper
     height 60px
+    margin-bottom 10px
     // overflow hidden
     .content
       display inline-flex
@@ -136,11 +145,23 @@ export default {
       // white-space nowrap
       // overflow: hidden;
       .wrapper-item
+        position relative
         font-size 30px
         height auto
         padding 0 8px
         white-space nowrap
         margin-right 5px
+        &.active:after
+          content ''
+          display block
+          width 100%
+          height 1px
+          background #BB2C08
+          position absolute
+          left 0
+          bottom 0
+          
+
 
 
 </style>

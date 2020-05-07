@@ -9,24 +9,77 @@
       <button>登录</button>
     </div>
     <!-- 导航区域 -->
-    
+    <div class="wrapper" ref="scrollWrapper">
+      
+          <div class="content" v-if="indexData.kingKongModule">
+            <div class="wrapper-item" ><span>推荐</span></div>
+            <div class="wrapper-item" v-for="(item,index) in indexData.kingKongModule.kingKongList " :key="index">
+              <span>{{item.text}}</span>
+            </div>
+          </div>
+          
+    </div>
+   
+    <div class="indexContent">
+       <!-- 轮播图 -->
+      <Recommend :indexData="indexData"></Recommend>
+    </div>
+  
+     
+
+
+
   </div>
 </template>
 
 <script>
 
-
-
+import {mapState,mapActions} from 'vuex'
+import BScroll from 'better-scroll'
+import Recommend from '../../components/Recommend/recommend'
 export default {
   name: 'Index',
   components: {
- 
+    Recommend,
   },
   data(){
     return{
       
+      scroll:null,
+       
     }
-  }
+  },
+  
+  mounted(){
+    this.getIndexData()
+    
+    // console.log(this.$refs.scrollWrapper,"----------")
+     
+  },
+  updated(){
+    this.$nextTick(()=>{
+        this.scroll = new BScroll(this.$refs.scrollWrapper,{
+        click: true,
+        scrollX: true, // 开启横行滚动
+      })
+      })
+  },
+  computed:{
+     
+  },
+   methods:{
+    ...mapActions({
+      getIndexData:'getIndexData'
+    }),
+  },
+  computed:{
+    ...mapState({
+      indexData:state=>state.index.indexData
+    })
+  },
+ 
+
+
   
 }
 </script>
@@ -52,7 +105,7 @@ export default {
 					position absolute
 					left 10px
 					top 15px
-					font-size 30px
+					font-size 15px
          
 				input
 					width 370px
@@ -74,15 +127,23 @@ export default {
 				overflow hidden
 				text-overflow ellipsis
 				padding 0 5px
- 
-        
-
-    
-    
-
-		
-	
-
+  .wrapper
+    height 60px
+    // overflow hidden
+    .content
+      display inline-flex
+      // width 100%
+      height auto
+      padding 0 15px
+      line-height 60px
+      // white-space nowrap
+      // overflow: hidden;
+      .wrapper-item
+        font-size 30px
+        height auto
+        padding 0 8px
+        white-space nowrap
+        margin-right 5px
 
 
 </style>

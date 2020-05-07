@@ -64,9 +64,6 @@ export default {
       })
       })
   },
-  computed:{
-     
-  },
    methods:{
     ...mapActions({
       getIndexData:'getIndexData'

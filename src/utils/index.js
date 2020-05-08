@@ -4,3 +4,4 @@ export  const reqNavList = ()=>myAxios.get('/NavList')
 export const reqNavCateList = ()=>myAxios.get('/NavCateList')
 //分类
 export const reqCateNavData = ()=>myAxios.get('/cateNavData')
+export const reqCateListData = ()=>myAxios.get('/cateListData')

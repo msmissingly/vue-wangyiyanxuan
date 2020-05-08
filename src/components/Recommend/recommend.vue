@@ -15,7 +15,7 @@
         </swiper-slide>
       </swiper>
       <div class="swiper-pagination circle" slot="pagination"></div>
-     </div>
+    </div>
 
      <!-- 三个横向图标 -->
      <div class="policyDescList">
@@ -41,28 +41,6 @@
         </div>
      </div>
 
-      <div class="kouzhao">
-        <img src="https://yanxuan.nosdn.127.net/7db5ad89be165b82b6a3e261029d0122.gif?imageView&quality=75" alt="">
-      </div> 
-      <div class="xinren">新人有礼</div>
-      <div class="xinrenContainer">
-        <div class="xin-left">
-          <span class="text">新人专享礼包</span>
-          <img src="" alt="">
-        </div>
-        <div class="xin-right">
-          <div class="xin-r-top">
-            <div><span>福利社</span></div>
-            <div><span>今日特价</span></div>
-            <img src="" alt="">
-          </div>
-          <div class="xin-r-bottom">
-            <div><span>新人拼团</span></div>
-            <div><span>1元起包邮</span></div>
-            <img src="" alt="">
-          </div>
-        </div>
-      </div>
       <CateGorys></CateGorys>
    </div>
   </div>
@@ -101,15 +79,12 @@ export default {
   },
  
   mounted(){
-    
-    this.scroll = new BScroll(document.querySelector('.recommendContainer'),{
-      click: true,
-      scrollY: true, // 开启横行滚动
-      // eventPassthrough: 'vertical'
-    })
-    // console.log(this.scroll,"1111")
-    
+     this.scroll = new BScroll(document.querySelector('.recommendContainer'),{
+        click: true,
+        scrollY: true, // 开启横行滚动
+      })
   },
+ 
   computed:{
     ...mapState({
       indexData:state=>state.index.indexData
@@ -123,7 +98,7 @@ export default {
     overflow hidden
     height 1074px
     .content
-      height 2000px
+      height 3000px
       .swiperWrap
         position relative
         margin 5px 0
@@ -168,34 +143,13 @@ export default {
             height 110px
           span
             font-size 24px
-      .kouzhao
-        img
-          width 100%
-          height 240px
-      .xinren
-        position relative
-        text-align center
-        width 100%
-        height 90px
-        line-height 90px
-        font-size 32px
-        &:before
-          content ''
-          display inline-block
-          height 2px
-          width 20px
-          background #333
-          position absolute
-          left 280px
-          top 40px
-        &:after
-          content ''
-          display inline-block
-          height 2px
-          width 20px
-          background #333
-          position absolute
-          right  280px
-          top 40px 
+      
+        
+
+
+
+
+
               
+
 </style>

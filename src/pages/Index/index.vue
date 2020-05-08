@@ -12,10 +12,10 @@
     <div class="wrapper" ref="scrollWrapper">
       
           <div class="content" v-if="indexData.kingKongModule">
-            <div class="wrapper-item" @click="changeNavIndex(0,0)" :class="{active: navIndex === 0}">
+            <div class="wrapper-item" @click="changeNavIndex(0)" :class="{active: navIndex === 0}">
               <span>推荐</span>
             </div>
-            <div class="wrapper-item" :class="{active: navIndex === index + 1}" @click="changeNavIndex((index + 1), navItem.L1Id)" v-for="(navItem,index) in indexData.kingKongModule.kingKongList.slice(1,indexData.kingKongModule.kingKongList.length) " :key="index">
+            <div class="wrapper-item" :class="{active: navIndex === index + 1}" @click="changeNavIndex((index + 1))" v-for="(navItem,index) in indexData.kingKongModule.kingKongList.slice(1,indexData.kingKongModule.kingKongList.length) " :key="index">
               <span>{{navItem.text}}</span>
             </div>
           </div>
@@ -24,7 +24,8 @@
    
     <div class="indexContent">
        <!-- 轮播图 -->
-      <Recommend :indexData="indexData"></Recommend>
+      <Recommend :indexData="indexData" v-if='navIndex === 0'></Recommend>
+      <CateList v-else :navIndex='navIndex'></CateList>
     </div>
   
      
@@ -35,7 +36,7 @@
 </template>
 
 <script>
-
+import CateList from '../../components/CateList/cateList'
 import {mapState,mapActions} from 'vuex'
 import BScroll from 'better-scroll'
 import Recommend from '../../components/Recommend/recommend'
@@ -43,11 +44,12 @@ export default {
   name: 'Index',
   components: {
     Recommend,
+    CateList
+
   },
   data(){
     return{
       navIndex:0,
-      navId:0,
       scroll:null,
        
     }
@@ -57,7 +59,7 @@ export default {
     this.getIndexData()
     
     // console.log(this.$refs.scrollWrapper,"----------")
-     
+    
   },
   updated(){
     this.$nextTick(()=>{
@@ -66,14 +68,14 @@ export default {
         scrollX: true, // 开启横行滚动
       })
       })
+      
   },
    methods:{
     ...mapActions({
       getIndexData:'getIndexData'
     }),
-    changeNavIndex(navIndex, navId){
+    changeNavIndex(navIndex){
 				this.navIndex = navIndex
-				this.navId = navId
 			},
   },
   computed:{
@@ -91,6 +93,7 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .indexContainer
+ 
   .header 
 			display flex
 			height 60px
@@ -160,7 +163,8 @@ export default {
           position absolute
           left 0
           bottom 0
-          
+  
+
 
 
 

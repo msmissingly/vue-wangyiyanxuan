@@ -4,7 +4,8 @@ import {
 } from '../mutation-type'
 const state = {
 	initData: 'index的初始化测试数据',
-	indexData: {}, // index主页数据
+  indexData: {}, // index主页数据
+
 }
 const mutations = {
 	[CHANGEINDEXDATA](state, indexData){

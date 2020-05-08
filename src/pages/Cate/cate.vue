@@ -53,10 +53,14 @@ export default {
     }
   },
   async mounted(){
-    this.scroll = new BScroll(this.$refs.leftContainer,{
+    this.scrollLeft = new BScroll(this.$refs.leftContainer,{
           click: true,
           scrollY: true,
-          }) 
+          })
+    this.scrollRight = new BScroll(this.$refs.rightContainer,{
+          click: true,
+          scrollY: true,
+          })  
     let cateNavData = await reqCateNavData()
     console.log(cateNavData.data.categoryL1List)
     this.cateNavData = cateNavData.data.categoryL1List
@@ -115,7 +119,7 @@ export default {
       overflow hidden
       .content
         padding 40px 0
-        height 1500px
+        height 1100px
         display flex
         flex-direction column
         align-items center
@@ -143,7 +147,9 @@ export default {
       width 528px
       height 872px
       padding 30px 30px 0 30px
+      overflow hidden
       .content
+        height 1000px
         .top
           margin-bottom 30px
           img 

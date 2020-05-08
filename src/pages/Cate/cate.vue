@@ -75,7 +75,7 @@ export default {
       this.navId = navId
       let currentList = this.cateListData.find(item => item.id === this.navId)
       this.currentList = currentList.categoryList
-      console.log(currentList,"-------")
+      // console.log(currentList,"-------")
     }
   },
   computed:{

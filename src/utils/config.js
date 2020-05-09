@@ -16,7 +16,7 @@ axios.interceptors.request.use((config)=>{
 //响应拦截器
 axios.interceptors.response.use(
 	response => {
-    Toast.success('请求成功')
+    // Toast.success('请求成功')
 		return response.data
 	},
 	err => {

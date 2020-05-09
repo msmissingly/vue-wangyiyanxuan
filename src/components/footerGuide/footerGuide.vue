@@ -17,7 +17,7 @@
         <span class="item-icon iconfont icongouwuche2" ></span>
         <span >购物车</span>
       </a>
-      <a href="javascript:;" class="guide_item" @click="goto(`/Personal`)" :class="{on:$route.path===`/Personal`}">
+      <a href="javascript:;" class="guide_item" @click="go" :class="{on:$route.path===`/Personal`}">
         <span class="item-icon iconfont icontubiaozhizuomoban" ></span>
         <span >个人</span>
       </a>
@@ -50,6 +50,14 @@ export default {
     },
     isClick(click){
       this.click = !click
+    },
+    go(){
+      let userInfo = localStorage.getItem('userInfo')
+      if(userInfo){
+        this.$router.replace('/Personal')
+      }else{
+        this.$router.replace('/Login')
+      }
     }
   },
 

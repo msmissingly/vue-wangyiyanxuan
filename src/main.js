@@ -4,7 +4,9 @@ import 'lib-flexible/flexible'
 import router from '@/router/index.js'
 import store from './store/index.js'
 import vueSwiper from 'vue-awesome-swiper'  //引入vue-awesome-swiper
-import 'swiper/css/swiper.css'  //引入样式
+import 'swiper/css/swiper.css'  //引入样式import '@/validate/index.js' 
+import '@/validate/index.js'//引入验证
+
 Vue.use(vueSwiper)  //使用插件
 
 Vue.config.productionTip = false
